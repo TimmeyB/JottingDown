@@ -1,0 +1,87 @@
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Jotting Book</title>
+
+    <style>
+      body {
+        font-family: sans-serif;
+        text-align: center;
+      
+      }
+      h1 {
+        font-size: 2rem;
+      }
+      form {
+        display: inline-block;
+        padding: 10px;
+        border: 1px solid lightgray;
+      }
+      .list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      .list > li {
+        padding: 10px;
+        border: 1px solid lightgray;
+        margin: 5px 0;
+      }
+      input[type=text]{
+        width:300px;
+        height: 250px;
+        background-color:white;
+      }
+      input[type=submit]{
+        background-color: rgb(91, 165, 42);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>My To-Do List</h1>
+
+    <form>
+      <span id="'overall">
+      <input type="text" id="todo-input" required>
+      <button type="submit" id="add-todo-button" >Save</button>
+      </span>
+    </form>
+
+
+    <ul class="list"></ul>
+
+    <script>
+    
+      // Get references to the form elements
+      const todoForm = document.querySelector('form');
+      const todoInput = document.querySelector('#todo-input');
+      const addTodoButton = document.querySelector('#add-todo-button');
+
+      // Get a reference to the list
+      const todoList = document.querySelector('.list');
+
+      // Listen for form submission
+      todoForm.addEventListener('submit', (event) => {
+        // Stop the form from submitting
+        event.preventDefault();
+
+        // Get the to-do item value
+        const todoValue = todoInput.value;
+
+        // Create a new <li> element
+        const listItem = document.createElement('li');
+
+        // Set the list item's content
+        listItem.textContent = todoValue;
+
+        // Append the list item to the list
+        todoList.appendChild(listItem);
+
+        // Reset the input
+        todoInput.value = '';
+      });
+    </script>
+  </body>
+</html>
